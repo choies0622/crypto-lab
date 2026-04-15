@@ -3,17 +3,57 @@
 
 ### To Do
 - [x] RSA
-- [ ] RSA attack demo
+- [x] RSA attack demo
 - [ ] Classical crypto adventure
+    - [x] Caesar crypto
 - [ ] Develop my Logistic map crypto
+
+## Caesar
+1. **Background**  
+    *Caesar cipher* is one of the simplest and most widely known encryption techniques.  
+    It is a type of *substitution cipher*, which is a part of *symmetric cryptosystem*.  
+    This cipher was named after Julius Caesar, the Roman general, who used it in his private correspondence.
+2. **Steps**  
+    Each letter in the plaintext is replaced by a letter some fixed number of positions along the alphabet.  
+    
+    To **encrypt** a message $m$:  
+    $$E_n(x) = (x + n) \bmod 26$$
+    To **decrypt** a cipher $c$:
+    $$D_n(x) = (x - n) \bmod 26$$
+    *i.e. lets use **left shift of 3 places** for encryption.*  
+    |Plain|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|
+    |--|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
+    |Cipher|X|Y|Z|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|
+    
+    **`Plaintext : THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG`**  
+    **`Ciphertext: QEB NRFZH YOLTK CLU GRJMP LSBO QEB IXWV ALD`**  
+3. **Ideas**
+    - Modulus
+    - Submitution cipher
+4. **File Structure**  
+    ```
+    crypto-lab/
+    └─ caeser/
+       ├─ caeser.py
+       └─ demo.py
+    ```
+5. **Run and Output**
+    - Run: `python caeser/caeser.py`
+    - Output:
+    ```
+    Enter the message [str & int]: Hello world 123
+    Enter the key [int]: 3
+    Encrypted: KHOOR ZRUOG 456
+    Decrypted: HELLO WORLD 123
+    ```
 
 ## RSA
 1. **Background**  
-    *RSA algorithm* is a part of the old **public-key cryptosystem**, or asymmetric cryptosystem, which uses different key to encrypt and decrypt.  
+    *RSA algorithm* is a part of the old **public-key cryptosystem**, or *asymmetric cryptosystem*, which uses **different keys for encryption and decryption**.  
     This algorithm was invented by Ron Rivest, Adi Shamir and Leonard Adleman, firstly published in 1977.  
 2. **Steps**  
     Generate Keypairs:
-    1. Select an any prime number $p$, $q$.  
+    1. Select an any prime numbers $p$ and $q$.  
     2. Calculate $n = p \times q$.  
     3. Calculate $\varphi = (p - 1)(q - 1)$.  
     4. Choose an integer $e$ such that $1 < e < \varphi$ and $\gcd(e, \varphi) = 1$.  
@@ -26,7 +66,7 @@
     To **decrypt** a cipher $c$:
     $$m = c^d \bmod n$$
 3. **Ideas**
-    - Modulurs
+    - Modulus
     - Euler totient
     - Modular inverse
     - Public/private key separation
@@ -43,10 +83,10 @@
     - Run: `python rsa/demo.py`
     - Output:
         ```
-        Keypair: (350633, 282323, 338267)
-        Enter the message: hello I am homo sapiens
-        Encrypted: [10445, 205055, 231431, 231431, 156233, 263688, 170647, 263688, 22320, 272231, 263688, 10445, 156233, 272231, 156233, 263688, 152115, 22320, 43420, 14604, 205055, 220719, 152115]
-        Decrypted: hello I am homo sapiens
+        Keypair: (229039, 26953, 216937)
+        Enter the message: Hello world 123
+        Encrypted: [222252, 45740, 59485, 59485, 48754, 160075, 125796, 48754, 204598, 59485, 228093, 160075, 190764, 1032, 53066]
+        Decrypted: Hello world 123
         ```
         - used ASCII for non-numbers.
 6. **Limitation**  
@@ -56,11 +96,11 @@
     - Run: `python rsa/attack_demo.py`
     - Output:
     ```
-    Keypair: (122539, 110171, 66803)
-    Enter the message: I am homo sapiens 123
-    Encrypted: [50706, 36447, 23296, 95729, 36447, 53402, 93282, 95729, 93282, 36447, 33710, 23296, 47701, 20759, 85789, 38751, 33710, 36447, 10957, 109133, 11527]
-    Public Key: (122539, 110171)
-    Factored n into p=283, q=433
-    Recovered private exponent d=66803
-    Decrypted message: I am homo sapiens 123
+    Keypair: (164959, 31903, 111143)
+    Enter the message: Hello world 123
+    Encrypted: [107124, 29466, 73140, 73140, 130659, 103808, 78432, 130659, 28709, 73140, 60982, 103808, 130328, 160132, 104614]
+    Public Key: (164959, 31903)
+    Factored n into p=293, q=563
+    Recovered private exponent d=111143
+    Decrypted message: Hello world 123
     ```
