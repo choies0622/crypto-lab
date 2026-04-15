@@ -1,11 +1,12 @@
 import rsa
 
 demo = rsa.rsa()
-print(f"Keypair: {demo.gen_keypair()}")
+n, e, d = demo.gen_keypair()
+print(f"Keypair: {(n, e, d)}")
 
 message = input("Enter the message: ")
 
-encrypted = demo.encrypt(message)
-decrypted = demo.decrypt(encrypted)
-print(f"Encrypted: {encrypted}")
+cipher = demo.encrypt(message, [n, e])
+decrypted = demo.decrypt(cipher, [n, d])
+print(f"Encrypted: {cipher}")
 print(f"Decrypted: {decrypted}")

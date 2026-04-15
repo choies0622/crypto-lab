@@ -58,16 +58,18 @@ class rsa:
         self.d = self._gen_d()
         return self.n, self.e, self.d
 
-    def encrypt(self, m: int | str) -> tuple:
+    def encrypt(self, m: int | str, public_key: tuple[int, int]) -> tuple:
+        n, e = public_key
         m = [ord(char) for char in m]
         r = []
         for i in range(len(m)):
-            r.append(pow(m[i], self.e, self.n))
+            r.append(pow(m[i], e, n))
         return r
 
-    def decrypt(self, c: tuple) -> int | str:
+    def decrypt(self, c: tuple, private_key: tuple[int, int]) -> int | str:
+        n, d = private_key
         r = []
         for i in range(len(c)):
-            r.append(chr(pow(c[i], self.d, self.n)))
+            r.append(chr(pow(c[i], d, n)))
         r = "".join(r)
         return r
