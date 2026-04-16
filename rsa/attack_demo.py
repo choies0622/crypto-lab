@@ -8,7 +8,7 @@ message = input("Enter the message: ")
 cipher = demo.encrypt(message, [n, e])
 print(f"Encrypted: {cipher}\nPublic Key: {(n, e)}")
 
-attack = attack.attack(cipher, (n, e))
+attack = attack.attackRsa(cipher, (n, e))
 p, q, d, cracked = attack.attack()
 print(f"""Factored n into p={p}, q={q}
 Recovered private exponent d={d}

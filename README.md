@@ -46,6 +46,46 @@
     Encrypted: KHOOR ZRUOG 456
     Decrypted: HELLO WORLD 123
     ```
+6. **Limitation**  
+    As key is an integer between $0$ and $25$, and therefore there is only 26 cases, why don't we just try them all?  
+    → This attack method is called **Brute Force Attack**.  
+    *→ See `caeser/attack.py` and `rsa/attack_demo.py`.*  
+    
+    - Run: `python caeser/attack_demo.py`
+    - Output:  
+    (The brute-force attack has been successfully decrypted, as shown in the line 8.)
+    ```
+    Enter the message [str & int]: Hello world 123
+    Enter the key [int]: 3
+    Encrypted: KHOOR ZRUOG 456
+    Decrypt trial:
+    KHOOR ZRUOG 456
+    JGNNQ YQTNF 345
+    IFMMP XPSME 234
+    HELLO WORLD 123
+    GDKKN VNQKC 012
+    FCJJM UMPJB 901
+    EBIIL TLOIA 890
+    DAHHK SKNHZ 789
+    CZGGJ RJMGY 678
+    BYFFI QILFX 567
+    AXEEH PHKEW 456
+    ZWDDG OGJDV 345
+    YVCCF NFICU 234
+    XUBBE MEHBT 123
+    WTAAD LDGAS 012
+    VSZZC KCFZR 901
+    URYYB JBEYQ 890
+    TQXXA IADXP 789
+    SPWWZ HZCWO 678
+    ROVVY GYBVN 567
+    QNUUX FXAUM 456
+    PMTTW EWZTL 345
+    OLSSV DVYSK 234
+    NKRRU CUXRJ 123
+    MJQQT BTWQI 012
+    LIPPS ASVPH 901
+    ```
 
 ## RSA
 1. **Background**  

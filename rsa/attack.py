@@ -1,6 +1,6 @@
 import rsa
 
-class attack:
+class attackRsa:
     def __init__(self, c: int | str, public_key: tuple[int, int]):
         self.c = c
         self.n, self.e = public_key
