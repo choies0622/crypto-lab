@@ -29,7 +29,7 @@
     **`Ciphertext: QEB NRFZH YOLTK CLU GRJMP LSBO QEB IXWV ALD`**  
 3. **Ideas**
     - Modulus
-    - Submitution cipher
+    - Substitution cipher
 4. **File Structure**  
     ```
     crypto-lab/
@@ -93,7 +93,7 @@
     This algorithm was invented by Ron Rivest, Adi Shamir and Leonard Adleman, firstly published in 1977.  
 2. **Steps**  
     Generate Keypairs:
-    1. Select an any prime numbers $p$ and $q$.  
+    1. Select any prime numbers $p$ and $q$.  
     2. Calculate $n = p \times q$.  
     3. Calculate $\varphi = (p - 1)(q - 1)$.  
     4. Choose an integer $e$ such that $1 < e < \varphi$ and $\gcd(e, \varphi) = 1$.  

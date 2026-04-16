@@ -1,4 +1,4 @@
-class caeser:
+class caesar:
     def encrypt(self, m: str, key: int):
         m = m.upper()
         encrypted = []
